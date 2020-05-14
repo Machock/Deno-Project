@@ -1,6 +1,6 @@
 import { Application, send, Context } from "https://deno.land/x/oak/mod.ts";
 import config from "./config/main.ts";
-// import connect from "./utils/db.ts";
+import connect from "./utils/db.ts";
 
 // import api router
 import userRouter from "./resources/user/user.router.ts";
@@ -18,7 +18,14 @@ app.use(itemRouter.allowedMethods());
 export default async function start() {
   try {
     // connect db
-    // await connect();
+    const client = await connect();
+    const username = "manyuanrong";
+    const users = await client.query(`select * from users`);
+    const queryWithParams = await client.query(
+      "select ??,name from ?? where id = ?",
+      ["id", "users", 1]
+    );
+    console.log(client);
 
     // use static folder
     app.use(async (context: Context) => {

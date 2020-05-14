@@ -32,6 +32,7 @@ export const createUser = (context: RouterContext) => {
 
 export const getUser = (context: RouterContext) => {
   if (context.params && context.params.id && books.has(context.params.id)) {
+    context.response.headers.set("content-type", `application/json`);
     context.response.body = books.get(context.params.id);
   }
 };

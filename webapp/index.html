@@ -7,5 +7,23 @@
   </head>
   <body>
     <div>XXXXXXXXXXXXXXXXXXXXXXXX</div>
+    <button id="btn">Fetch Data</button>
+    <div id="root"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click", () => {
+        fetch(`${window.location.origin}/api/user/`, {
+          headers: {
+            "content-type": `application/json`,
+          },
+        })
+          .then(function (res) {
+            return res.text();
+          })
+          .then((res) => {
+            console.log(res);
+            document.getElementById("root").innerText = res;
+          });
+      });
+    </script>
   </body>
 </html>

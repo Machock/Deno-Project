@@ -4,8 +4,8 @@ export default function connect() {
   return new Client().connect({
     hostname: "127.0.0.1",
     username: "root",
-    db: "dbname",
+    db: "deno_db",
     poolSize: 3, // connection limit
-    password: "password",
+    password: "12345",
   });
 }
