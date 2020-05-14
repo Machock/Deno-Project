@@ -19,13 +19,12 @@ export default async function start() {
   try {
     // connect db
     const client = await connect();
-    const username = "manyuanrong";
-    const users = await client.query(`select * from users`);
-    const queryWithParams = await client.query(
-      "select ??,name from ?? where id = ?",
-      ["id", "users", 1]
-    );
-    console.log(client);
+    // const username = "manyuanrong";
+    // const users = await client.query(`select * from users`);
+    // const queryWithParams = await client.query(
+    //   "select ??,name from ?? where id = ?",
+    //   ["id", "users", 1]
+    // );
 
     // use static folder
     app.use(async (context: Context) => {
